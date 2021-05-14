@@ -1,6 +1,7 @@
 import React from 'react';
 import CardItem from './item'
 import './card.css';
+import './card-R.css';
 import {dummyData} from './data';
 
 const LotteryCards = () => {
