@@ -35,9 +35,16 @@
     border-radius: 20px;
     /* height: 300px */
     box-shadow: 0 8px 6px -6px black;
+    transition: 1s
+}
 
-    
-  }
+.card:hover {
+  background-color: #fab06faf;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px -6px black;
+
+
+}
 
 .lotter-cards-container{
     margin-left: 5%;
