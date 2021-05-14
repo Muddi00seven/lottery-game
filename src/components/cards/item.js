@@ -7,12 +7,11 @@ const CardItem = ({ data }) => {
     const [endTime, setEndTime] = useState(0)
 
     const getTimeAsync = async () => {
-        console.log("before transaction");
         if (contract != null && contract != undefined) {
 
             //   const start = +await contract.methods.vestingStart().call();
             //   const duration = +await contract.methods.vestingDuration().call();
-            let receipt = 162622463;
+            let receipt = data.tmeeStamp;
             setEndTime(receipt * 1000)
         }
     }
@@ -96,13 +95,51 @@ const CardItem = ({ data }) => {
         <div>
             <div className="column">
                 <div className="card">
+                <>
+      <div className="display-timer">
+      <div style={{marginBottom: '-20px'}}>
+            <span className="timer-num-two-heading" >
+              LOTTO POOL ENDS IN
+  
+            </span>
+          </div>
+        <div className="timer-flex">
+          <div className="d-two">
+            <span className="timer-num one">
+              <b>{timerDays} Days </b>
+            </span>
+
+          </div>
+          <div className="">
+            <span className="timer-num" style={{marginLeft:"10px" }}>
+              <b> And {timerHours} :</b>
+            </span>
+          </div>
+          <div className="">
+            <span className="timer-num two" >
+              <b>{timerMinutes} : </b>
+            </span>
+          </div>
+          <div className="">
+            <span className="timer-num two">
+              <b>{timerSeconds}</b>
+            </span>
+          </div>
+      
+
+        </div>
+      </div>
+
+      <div className="btn-div"></div>
+
+    </>
                     <div className="lottercard-top-container">
                         <h3 className="lottercard-current-part">Current participants: {data.participants}</h3>
                         <h3 className="lottercard-max-part">Max participants: {data.maxparticipants}</h3>
                     </div>
 
-                    <h2 className="lottercard-">Contribution amount {data.amount}</h2>
-                    <div className="lottercard-">
+                    <h2 className="lottercard-contribution-heading">Contribution amount: {data.amount}</h2>
+                    <div className="lottercard-btn-container">
                         <button className="lottercard-draw-btn">
                             Draw Winner
                     </button>

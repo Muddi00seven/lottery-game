@@ -46,14 +46,45 @@
 .lottercard-top-container{
   display: flex;
   text-align: center;
-  justify-content: flex-start
+  justify-content: space-between;
+  margin-top: 5px
 }
 .lottercard-current-part{
   margin-left: 10px
 
 }
 .lottercard-max-part{
-  margin-left: 100px
+  margin-right: 10px
 }
 
-  
+.lottercard-btn-container{
+  display: flex;
+  justify-content: space-between
+}
+.lottercard-contribution-heading{
+}
+.lottercard-draw-btn{
+  width: 150px;
+  margin-left: 10px;
+  height: 30px;
+  font-size: 17px;
+  border-radius: 10px;
+  background-color: rgba(99, 163, 223, 0.993);
+  border-style: none;
+  color: white;
+  font-weight: 700;
+
+
+}
+
+.lottercard-lotto-btn{
+  width: 150px;
+  margin-right: 10px;
+  height: 30px;
+  font-size: 17px;
+  border-radius: 10px;
+  background-color: rgba(102, 221, 142, 0.979);
+  border-style: none;
+  color: white;
+  font-weight: 700;
+}
