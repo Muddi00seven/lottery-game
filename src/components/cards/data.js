@@ -3,24 +3,32 @@ export const dummyData = [
         id: "1",
         creator: "0x0000000000000000",
         participants: "50",
-        contribution: "10ETH"
+        maxparticipants: "500",
+        tmeeStamp: "",
+        amount: "10"
     },
     {
         id: "2",
         creator: "0x0000000000454500",
         participants: "70",
-        contribution: "60ETH"
+        maxparticipants: "400",
+        tmeeStamp: "",
+        amount: "60"
     },
     {
         id: "3",
         creator: "0x0000789000000000",
         participants: "90",
-        contribution: "17ETH"
+        maxparticipants: "600",
+        tmeeStamp: "",
+        amount: "17"
     },
     {
         id: "4",
         creator: "0x00007971000000000",
         participants: "10",
-        contribution: "15ETH"
+        maxparticipants: "300",
+        tmeeStamp: "",
+        amount: "15"
     },
 ]

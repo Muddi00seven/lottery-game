@@ -5,19 +5,19 @@ const CardItem = ({ data }) => {
         <div>
             <div className="column">
                 <div className="card">
-                    <h3>{data.creator}</h3>
-                    <p>Some text</p>
-                    <p>Some text</p>
+                    <h3>Current participants {data.participants}</h3>
+                    <h3>Max participants {data.maxparticipants}</h3>
+                    <h3>Contribution amount {data.amount}</h3>
                     <div>
-                    <button>
-                        abc
+                        <button>
+                            Draw Winner
                     </button>
-                    <button>
-                        abc
+                        <button>
+                            Enter Lotto
                     </button>
+                    </div>
                 </div>
-                </div>
-           
+
             </div>
         </div>
     )
