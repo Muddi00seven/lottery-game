@@ -21,13 +21,7 @@
   }
   
   /* Responsive columns */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
-  }
+
   
   /* Style the counter cards */
   .card {
@@ -35,4 +29,18 @@
     padding: 16px;
     text-align: center;
     background-color: #f1f1f1;
+  }
+
+.lotter-cards-container{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
   }

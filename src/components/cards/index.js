@@ -6,7 +6,7 @@ import {dummyData} from './data';
 const LotteryCards = () => {
     let lotteryData = dummyData;
     return (
-        <div>
+        <div className="lotter-cards-container">
             <div className="row">
             {
                 lotteryData.map((data)=> (
