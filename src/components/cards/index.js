@@ -7,10 +7,10 @@ const LotteryCards = () => {
     let lotteryData = dummyData;
     return (
         <div>
-            <div class="row">
+            <div className="row">
             {
                 lotteryData.map((data)=> (
-                    <CardItem />
+                    <CardItem data={data} />
                 ))
             }
             </div>
