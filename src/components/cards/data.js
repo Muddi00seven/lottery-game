@@ -31,4 +31,20 @@ export const dummyData = [
         tmeeStamp: "",
         amount: "15"
     },
+    {
+        id: "5",
+        creator: "0x00007971000000000",
+        participants: "70",
+        maxparticipants: "300",
+        tmeeStamp: "",
+        amount: "17"
+    },
+    {
+        id: "6",
+        creator: "0x00007971000000000",
+        participants: "40",
+        maxparticipants: "900",
+        tmeeStamp: "",
+        amount: "22"
+    },
 ]
