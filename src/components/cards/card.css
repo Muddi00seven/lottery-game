@@ -9,7 +9,7 @@
     width: 33%;
     padding: 0 10px;
     margin-top: 20px;
-    
+    font-family: 'Balsamiq Sans', cursive;
   }
   
   /* Remove extra left and right margins, due to padding */
@@ -27,10 +27,11 @@
   
   /* Style the counter cards */
   .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    color: rgb(42, 42, 42);
     padding: 16px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: #fab06f7e;
     border-radius: 20px;
     /* height: 300px */
     box-shadow: 0 8px 6px -6px black;
@@ -42,7 +43,18 @@
     margin-left: 5%;
     margin-right: 5%;
 }
+.lottercard-top-container{
+  display: flex;
+  text-align: center;
+  justify-content: flex-start
+}
+.lottercard-current-part{
+  margin-left: 10px
 
+}
+.lottercard-max-part{
+  margin-left: 100px
+}
 
   @media screen and (max-width: 600px) {
     .column {
