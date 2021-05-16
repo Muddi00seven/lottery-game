@@ -25,6 +25,12 @@ export const updatePool = (pools) => {
         payload: pools
     };
 }
+export const setupToken = (token) => {
+    return {
+        type: 'SETUP_TOKEN',
+        payload: token
+    };
+}
 export const setupContract = (contract) => {
     return {
         type: 'SETUP_CONTRACT',

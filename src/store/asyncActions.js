@@ -1,6 +1,8 @@
-import { setupWeb3, setupContract,updatePool, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
+import { setupWeb3, setupContract,setupToken,updatePool, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
 import Web3 from "web3";
 import { LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS } from '../contract/Lottogame';
+import { sSIMPLE_TOKEN__ABI, SIMPLE_TOKEN_ADDRESS } from '../contract/simpleCoin';
+
 
 export const loadBlockchain = async (dispatch) => {
     try {
@@ -11,10 +13,12 @@ export const loadBlockchain = async (dispatch) => {
             await Web3.givenProvider.enable();
             dispatch(setupWeb3(web3));
             const lottcontract = new web3.eth.Contract(LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS);
-            dispatch(setupContract(lottcontract));
+                       dispatch(setupContract(lottcontract));
+                       const tokenContract = new web3.eth.Contract(sSIMPLE_TOKEN__ABI, SIMPLE_TOKEN_ADDRESS);
+
             const accounts = await web3.eth.getAccounts();
             dispatch(addEthereumAccounts(lottcontract));
-            console.log("contract = ", lottcontract);
+            console.log("contract = ", lottcontract,tokenContract);
             console.log("contract.methods = ", lottcontract.methods);
             
            await updatePools(lottcontract,dispatch);
@@ -65,3 +69,14 @@ console.log("Before Joining Pool",poolId,amount);
         console.log("after Joining Pool",receipt);
 
     }
+    export const approve = async (web3,tokenContract,amount,accounts) => {
+        console.log("Before approve",tokenContract,amount);
+        try{
+            
+                const receipt= await tokenContract.methods.approve(LOTTO_GAME_ADDRESS,amount).send({from:accounts[0]});
+                console.log("after approval",receipt);
+        }catch(error){
+            console.log("Error in approve",error);
+        }
+        }
+            }
