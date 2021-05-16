@@ -22,6 +22,11 @@ export default (state, action) => {
           ...state,
           lottocontract: action.payload
         }
+        case 'SETUP_TOKEN':
+        return {
+          ...state,
+          tokenContract: action.payload
+        }
       case 'ADD_ETHEREUM_ACCOUNTS':
         return {
           ...state,

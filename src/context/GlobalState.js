@@ -8,6 +8,7 @@ const initialState = {
   web3: null,
   accounts: [],
   lottocontract: null,
+  tokenContract:null,
   web3LoadingErrorMessage:"",
   web3Loadded: false,
   lottoPools:[]
