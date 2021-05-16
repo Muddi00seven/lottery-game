@@ -94,6 +94,12 @@ const CardItem = ({ data }) => {
         };
     });
     const handleJoin = async() => {
+        try{
+            // let receipt = await joinLotto(lottoContract,poolId,ether,accounts)
+        }
+        catch(error) {
+            console.log("error",error)
+        }
         
     }
 

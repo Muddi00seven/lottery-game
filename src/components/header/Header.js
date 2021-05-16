@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   // AOS.init();
-  const [{ web3, accounts, claim, purchased, lottocontract }, dispatch] = useStore();
+  const [{ web3, accounts, claim, purchased, lottocontract,tokenContract }, dispatch] = useStore();
   
   useEffect(async()=>{
     if(lottocontract != null) {
@@ -93,7 +93,7 @@ function Header() {
   );
   const handleApprove = async() => {
     try{
-     let receipt = await approve(lottocontract,accounts);
+     let receipt = await approve(tokenContract,accounts);
     }
     catch(error) {
       console.log("error",error)

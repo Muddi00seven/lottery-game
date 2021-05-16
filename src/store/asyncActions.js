@@ -1,4 +1,4 @@
-import { setupWeb3, setupContract,setupToken,updatePool, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
+import { setupWeb3, setupContract, setupToken, updatePool, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
 import Web3 from "web3";
 import { LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS } from '../contract/Lottogame';
 import { sSIMPLE_TOKEN__ABI, SIMPLE_TOKEN_ADDRESS } from '../contract/simpleCoin';
@@ -14,15 +14,15 @@ export const loadBlockchain = async (dispatch) => {
             await Web3.givenProvider.enable();
             dispatch(setupWeb3(web3));
             const lottcontract = new web3.eth.Contract(LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS);
-                       dispatch(setupContract(lottcontract));
-                       const tokenContract = new web3.eth.Contract(sSIMPLE_TOKEN__ABI, SIMPLE_TOKEN_ADDRESS);
-
+            dispatch(setupContract(lottcontract));
+            const tokenContract = new web3.eth.Contract(sSIMPLE_TOKEN__ABI, SIMPLE_TOKEN_ADDRESS);
+            dispatch(setupToken(tokenContract))
             const accounts = await web3.eth.getAccounts();
-            dispatch(addEthereumAccounts(lottcontract));
-            console.log("contract = ", lottcontract,tokenContract);
+            dispatch(addEthereumAccounts(accounts));
+            console.log("contract = ", lottcontract, tokenContract);
             console.log("contract.methods = ", lottcontract.methods);
-            
-           await updatePools(lottcontract,dispatch);
+
+            await updatePools(lottcontract, dispatch);
 
 
 
@@ -39,45 +39,45 @@ export const loadBlockchain = async (dispatch) => {
         }
     }
 }
-export const updatePools = async (lottoContract,dispatch) => {
-    try{
-    if (lottoContract){
-    const poolList= await lottoContract.methods.getPools().call();
-    var lottopools=[];
+export const updatePools = async (lottoContract, dispatch) => {
+    try {
+        if (lottoContract) {
+            const poolList = await lottoContract.methods.getPools().call();
+            var lottopools = [];
 
-    console.log("List of Pools",poolList);
-    for (var i=0; i<poolList.length;i++){
-        const pool= await getPoolById(lottoContract,poolList[i]);
-        lottopools.push(pool);
-    }
-    console.log("Pools List", lottopools);
-    dispatch(updatePool(lottopools));
-}
-    }catch(error){
-        console.log("Error, getting Pool",error);
-    }
-}
-
-
-    export const getPoolById = async (lottoContract,id) => {
-
-const pool= await lottoContract.methods.getPoolbyId(id).call();
-return pool;
-    }
-    export const joinLotto = async (web3,lottoContract,poolId,amount,accounts) => {
-console.log("Before Joining Pool",poolId,amount);
-        const receipt= await lottoContract.methods. joinPool(poolId,amount).send({from:accounts[0]});
-        console.log("after Joining Pool",receipt);
-
-    }
-    export const approve = async (tokenContract,accounts) => {
-        console.log("Before approve",tokenContract);
-        try{
-            
-                const receipt= await tokenContract.methods.approve(LOTTO_GAME_ADDRESS,ethers.constants.MaxUint256).send({from:accounts[0]});
-                console.log("after approval",receipt);
-        }catch(error){
-            console.log("Error in approve",error);
+            console.log("List of Pools", poolList);
+            for (var i = 0; i < poolList.length; i++) {
+                const pool = await getPoolById(lottoContract, poolList[i]);
+                lottopools.push(pool);
+            }
+            console.log("Pools List", lottopools);
+            dispatch(updatePool(lottopools));
         }
-        }
-            
+    } catch (error) {
+        console.log("Error, getting Pool", error);
+    }
+}
+
+
+export const getPoolById = async (lottoContract, id) => {
+
+    const pool = await lottoContract.methods.getPoolbyId(id).call();
+    return pool;
+}
+export const joinLotto = async (lottoContract, poolId, amount, accounts) => {
+    console.log("Before Joining Pool", poolId, amount);
+    const receipt = await lottoContract.methods.joinPool(poolId, amount).send({ from: accounts[0] });
+    console.log("after Joining Pool", receipt);
+
+}
+export const approve = async (tokenContract, accounts) => {
+    console.log("Before approve", tokenContract, accounts);
+    try {
+
+        const receipt = await tokenContract.methods.approve(LOTTO_GAME_ADDRESS, ethers.constants.MaxUint256).send({ from: accounts[0] });
+        console.log("after approval", receipt);
+    } catch (error) {
+        console.log("Error in approve", error);
+    }
+}
+
