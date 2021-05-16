@@ -57,11 +57,12 @@ const CardItem = ({ data }) => {
     const startTimer = () => {
         const countdownDate = new Date("June 2, 2021 00:00:00").getTime();
         // const countdownDate = new Date(stringyDate).getTime();
-        let newTime = 1623170523
+        let newTime = data.timestamp *1000
         interval = setInterval(() => {
             const now = new Date().getTime();
-            const distance = endTime - now;
-
+       
+            // let checkTime  = now - newTime;
+            const distance = newTime - now
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor(
                 (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -81,10 +82,10 @@ const CardItem = ({ data }) => {
     };
 
     useEffect(() => {
-        if (contract != null && contract != undefined) {
+        // if (contract != null && contract != undefined) {
             startTimer();
 
-        }
+        // }
         getTimeAsync()
         return () => {
             clearInterval(interval.current);
@@ -134,11 +135,11 @@ const CardItem = ({ data }) => {
 
     </>
                     <div className="lottercard-top-container">
-                        <h3 className="lottercard-current-part">Current participants: {data.participants}</h3>
-                        <h3 className="lottercard-max-part">Max participants: {data.maxparticipants}</h3>
+                        <h3 className="lottercard-current-part">Current participants: {data._currentParticipants}</h3>
+                        <h3 className="lottercard-max-part">Max participants: {data._maxParticipants}</h3>
                     </div>
 
-                    <h2 className="lottercard-contribution-heading">Contribution amount: {data.amount}</h2>
+                    <h2 className="lottercard-contribution-heading">Contribution amount: {data._contributionAmount}</h2>
                     <div className="lottercard-btn-container">
                         <button className="lottercard-draw-btn">
                             Draw Winner

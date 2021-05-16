@@ -17,7 +17,7 @@ const LotteryCards = () => {
         <div className="lotter-cards-container">
             <div className="row">
             {
-                lotteryData.map((data)=> (
+                lottoPools.map((data)=> (
                     <CardItem data={data} />
                 ))
             }
