@@ -1,6 +1,6 @@
-import { setupWeb3, setupContract, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
+import { setupWeb3, setupContract,updatePool, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
 import Web3 from "web3";
-import { EXPENSE_TRACKER_ABI, EXPENSE_TRACKER_ADDRESS } from '../contract/ExpenseTrackerContract';
+import { LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS } from '../contract/Lottogame';
 
 export const loadBlockchain = async (dispatch) => {
     try {
@@ -10,12 +10,14 @@ export const loadBlockchain = async (dispatch) => {
             const web3 = new Web3(Web3.givenProvider);
             await Web3.givenProvider.enable();
             dispatch(setupWeb3(web3));
-            const contract = new web3.eth.Contract(EXPENSE_TRACKER_ABI, EXPENSE_TRACKER_ADDRESS);
-            dispatch(setupContract(contract));
+            const lottcontract = new web3.eth.Contract(LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS);
+            dispatch(setupContract(lottcontract));
             const accounts = await web3.eth.getAccounts();
-            dispatch(addEthereumAccounts(accounts));
-            console.log("contract = ", contract);
-            console.log("contract.methods = ", contract.methods);
+            dispatch(addEthereumAccounts(lottcontract));
+            console.log("contract = ", lottcontract);
+            console.log("contract.methods = ", lottcontract.methods);
+            
+           await updatePools(lottcontract,dispatch);
 
 
 
@@ -32,5 +34,28 @@ export const loadBlockchain = async (dispatch) => {
         }
     }
 }
+export const updatePools = async (lottoContract,dispatch) => {
+    try{
+    if (lottoContract){
+    const poolList= await lottoContract.methods.getPools().call();
+    var lottopools=[];
+
+    console.log("List of Pools",poolList);
+    for (var i=0; i<poolList.length;i++){
+        const pool= await getPoolById(lottoContract,poolList[i]);
+        lottopools.push(pool);
+    }
+    console.log("Pools List", lottopools);
+    dispatch(updatePool(lottopools));
+}
+    }catch(error){
+        console.log("Error, getting Pool",error);
+    }
+}
 
 
+    export const getPoolById = async (lottoContract,id) => {
+
+const pool= await lottoContract.methods.getPoolbyId(id).call();
+return pool;
+    }

@@ -20,12 +20,17 @@ export default (state, action) => {
       case 'SETUP_CONTRACT':
         return {
           ...state,
-          contract: action.payload
+          lottocontract: action.payload
         }
       case 'ADD_ETHEREUM_ACCOUNTS':
         return {
           ...state,
           accounts: action.payload
+        }
+        case 'UPDATE_POOLS':
+        return {
+          ...state,
+          lottoPools: action.payload
         }
       case 'WEB3_LOADING_ERROR':
         return {

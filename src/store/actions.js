@@ -19,7 +19,12 @@ export const setupWeb3 = (web3) => {
         payload: web3
     };
 }
-
+export const updatePool = (pools) => {
+    return {
+        type: 'SETUUPDATE_POOLS',
+        payload: pools
+    };
+}
 export const setupContract = (contract) => {
     return {
         type: 'SETUP_CONTRACT',

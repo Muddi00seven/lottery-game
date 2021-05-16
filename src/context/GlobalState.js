@@ -7,9 +7,10 @@ const initialState = {
   transactions: [],
   web3: null,
   accounts: [],
-  contract: null,
+  lottocontract: null,
   web3LoadingErrorMessage:"",
-  web3Loadded: false
+  web3Loadded: false,
+  lottoPools:[]
 }
 
 // Create context
