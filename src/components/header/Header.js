@@ -7,6 +7,7 @@ import { useStore } from '../../context/GlobalState'
 import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import {approve} from '../../store/asyncActions';
 
 // import {getTimeAsync} from '../../store/asyncActions'
 
@@ -37,15 +38,15 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   // AOS.init();
-  const [{ web3, accounts, claim, purchased, contract }, dispatch] = useStore();
+  const [{ web3, accounts, claim, purchased, lottocontract,tokenContract, allowance }, dispatch] = useStore();
   
   useEffect(async()=>{
-    if(contract != null) {
+    if(lottocontract != null) {
   // await  getTimeAsync(contract, dispatch)
 
     }
-  },[contract])
-  console.log("this is for contract", contract)
+  },[lottocontract])
+  console.log("this is for contract", lottocontract)
   console.log("this is for purchased", purchased);
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -90,6 +91,14 @@ function Header() {
       </div>
     </div>
   );
+  const handleApprove = async() => {
+    try{
+     let receipt = await approve(tokenContract,accounts,dispatch);
+    }
+    catch(error) {
+      console.log("error",error)
+    }
+  }
 
   return (
     <div className="container">
@@ -110,7 +119,13 @@ function Header() {
             <a>Connect wallet</a>
           </li>
           : ""}
-
+          {
+            allowance <= 0 && web3 != null ?
+            <li className="navLink connect" onClick={handleApprove}>
+            <a>Approve</a>
+          </li> :""
+          }
+       
           <li className="navLink whitepaper">
             <a href="#white-paper">White Paper</a>
           </li>

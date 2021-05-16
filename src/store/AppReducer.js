@@ -32,6 +32,11 @@ export default (state, action) => {
           ...state,
           accounts: action.payload
         }
+        case 'SETUP_ALLOWANCE':
+        return {
+          ...state,
+          allowance: action.payload
+        }
         case 'UPDATE_POOLS':
         return {
           ...state,

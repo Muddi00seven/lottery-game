@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useStore } from '../../context/GlobalState'
+import { useStore } from '../../context/GlobalState';
+import {joinLotto} from '../../store/asyncActions';
+
 
 const CardItem = ({ data }) => {
 
-    const [{ web3, accounts, claim, contract }, dispatch] = useStore();
+    const [{ web3, accounts, claim, lottocontract,allowance }, dispatch] = useStore();
     const [endTime, setEndTime] = useState(0)
-
+    console.log("allowance",allowance)
     const getTimeAsync = async () => {
-        if (contract != null && contract != undefined) {
+        if (lottocontract != null && lottocontract != undefined) {
 
             //   const start = +await contract.methods.vestingStart().call();
             //   const duration = +await contract.methods.vestingDuration().call();
@@ -82,16 +84,28 @@ const CardItem = ({ data }) => {
     };
 
     useEffect(() => {
-        // if (contract != null && contract != undefined) {
+        if (lottocontract != null && lottocontract != undefined) {
             startTimer();
 
-        // }
+        }
         getTimeAsync()
         return () => {
             clearInterval(interval.current);
         };
     });
+    const handleJoin = async() => {
+        try{
+            // let receipt = await joinLotto(lottoContract,poolId,ether,accounts)
+        }
+        catch(error) {
+            console.log("error",error)
+        }
+        
+    }
 
+    const handleDraw = async() => {
+        
+    }
     return (
         <div>
             <div className="column">
@@ -141,12 +155,19 @@ const CardItem = ({ data }) => {
 
                     <h2 className="lottercard-contribution-heading">Contribution amount: {data._contributionAmount}</h2>
                     <div className="lottercard-btn-container">
-                        <button className="lottercard-draw-btn">
+                        <button className="lottercard-draw-btn" onClick={handleDraw}>
                             Draw Winner
                     </button>
-                        <button className="lottercard-lotto-btn">
-                            Enter Lotto
-                    </button>
+                    {
+                        allowance <=0 ? 
+                        <button className="lottercard-lotto-btn-disabled"  disabled>
+                        Enter Lotto
+                </button> :
+                    <button className="lottercard-lotto-btn" onClick={handleJoin} >
+                    Enter Lotto
+            </button>
+                    }
+                    
                     </div>
                 </div>
 
