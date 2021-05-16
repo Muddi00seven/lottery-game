@@ -59,3 +59,9 @@ export const updatePools = async (lottoContract,dispatch) => {
 const pool= await lottoContract.methods.getPoolbyId(id).call();
 return pool;
     }
+    export const joinLotto = async (web3,lottoContract,poolId,amount,accounts) => {
+console.log("Before Joining Pool",poolId,amount);
+        const receipt= await lottoContract.methods. joinPool(poolId,amount).send({from:accounts[0]});
+        console.log("after Joining Pool",receipt);
+
+    }
