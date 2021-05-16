@@ -37,15 +37,15 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   // AOS.init();
-  const [{ web3, accounts, claim, purchased, contract }, dispatch] = useStore();
+  const [{ web3, accounts, claim, purchased, lottocontract }, dispatch] = useStore();
   
   useEffect(async()=>{
-    if(contract != null) {
+    if(lottocontract != null) {
   // await  getTimeAsync(contract, dispatch)
 
     }
-  },[contract])
-  console.log("this is for contract", contract)
+  },[lottocontract])
+  console.log("this is for contract", lottocontract)
   console.log("this is for purchased", purchased);
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
