@@ -63,6 +63,7 @@ export const updatePools = async (lottoContract, dispatch) => {
 export const getPoolById = async (lottoContract, id) => {
 
     const pool = await lottoContract.methods.getPoolbyId(id).call();
+    pool._poolId=id;
     return pool;
 }
 export const joinLotto = async (lottoContract, poolId, amount, accounts) => {
