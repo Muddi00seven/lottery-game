@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   // AOS.init();
-  const [{ web3, accounts, claim, purchased, lottocontract,tokenContract }, dispatch] = useStore();
+  const [{ web3, accounts, claim, purchased, lottocontract,tokenContract, allowance }, dispatch] = useStore();
   
   useEffect(async()=>{
     if(lottocontract != null) {
@@ -93,7 +93,7 @@ function Header() {
   );
   const handleApprove = async() => {
     try{
-     let receipt = await approve(tokenContract,accounts);
+     let receipt = await approve(tokenContract,accounts,dispatch);
     }
     catch(error) {
       console.log("error",error)
@@ -119,9 +119,13 @@ function Header() {
             <a>Connect wallet</a>
           </li>
           : ""}
-        <li className="navLink connect" onClick={handleApprove}>
+          {
+            allowance <= 0 && web3 != null ?
+            <li className="navLink connect" onClick={handleApprove}>
             <a>Approve</a>
-          </li>
+          </li> :""
+          }
+       
           <li className="navLink whitepaper">
             <a href="#white-paper">White Paper</a>
           </li>

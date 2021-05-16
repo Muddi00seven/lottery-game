@@ -37,6 +37,12 @@ export const setupContract = (contract) => {
         payload: contract
     };
 }
+export const setupAllowance = (receipt) => {
+    return {
+        type: 'SETUP_ALLOWANCE',
+        payload: receipt
+    };
+}
 export const addEthereumAccounts = (accounts) => {
     return {
         type: 'ADD_ETHEREUM_ACCOUNTS',

@@ -7,6 +7,7 @@ const initialState = {
   transactions: [],
   web3: null,
   accounts: [],
+  allowance: 0,
   lottocontract: null,
   tokenContract:null,
   web3LoadingErrorMessage:"",

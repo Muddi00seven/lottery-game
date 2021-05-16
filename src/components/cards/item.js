@@ -5,9 +5,9 @@ import {joinLotto} from '../../store/asyncActions';
 
 const CardItem = ({ data }) => {
 
-    const [{ web3, accounts, claim, lottocontract }, dispatch] = useStore();
+    const [{ web3, accounts, claim, lottocontract,allowance }, dispatch] = useStore();
     const [endTime, setEndTime] = useState(0)
-
+    console.log("allowance",allowance)
     const getTimeAsync = async () => {
         if (lottocontract != null && lottocontract != undefined) {
 
@@ -158,9 +158,16 @@ const CardItem = ({ data }) => {
                         <button className="lottercard-draw-btn" onClick={handleDraw}>
                             Draw Winner
                     </button>
-                        <button className="lottercard-lotto-btn" onClick={handleJoin}>
-                            Enter Lotto
-                    </button>
+                    {
+                        allowance <=0 ? 
+                        <button className="lottercard-lotto-btn-disabled"  disabled>
+                        Enter Lotto
+                </button> :
+                    <button className="lottercard-lotto-btn" onClick={handleJoin} >
+                    Enter Lotto
+            </button>
+                    }
+                    
                     </div>
                 </div>
 

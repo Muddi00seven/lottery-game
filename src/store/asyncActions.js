@@ -1,8 +1,9 @@
-import { setupWeb3, setupContract, setupToken, updatePool, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
+import { setupWeb3, setupContract,setupAllowance, setupToken, updatePool, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
 import Web3 from "web3";
 import { LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS } from '../contract/Lottogame';
 import { sSIMPLE_TOKEN__ABI, SIMPLE_TOKEN_ADDRESS } from '../contract/simpleCoin';
-import { ethers } from 'ethers'
+import { ethers } from 'ethers';
+
 
 
 export const loadBlockchain = async (dispatch) => {
@@ -23,7 +24,7 @@ export const loadBlockchain = async (dispatch) => {
             console.log("contract.methods = ", lottcontract.methods);
 
             await updatePools(lottcontract, dispatch);
-
+            await allowanceAsync(tokenContract,accounts,dispatch)
 
 
         }
@@ -70,14 +71,26 @@ export const joinLotto = async (lottoContract, poolId, amount, accounts) => {
     console.log("after Joining Pool", receipt);
 
 }
-export const approve = async (tokenContract, accounts) => {
+export const approve = async (tokenContract, accounts,dispatch) => {
     console.log("Before approve", tokenContract, accounts);
     try {
 
         const receipt = await tokenContract.methods.approve(LOTTO_GAME_ADDRESS, ethers.constants.MaxUint256).send({ from: accounts[0] });
+        // dispatch(setupAllowance(receipt))
         console.log("after approval", receipt);
     } catch (error) {
         console.log("Error in approve", error);
     }
 }
 
+
+export const allowanceAsync = async (tokenContract, accounts,dispatch) => {
+    console.log("Before approve", tokenContract, accounts);
+    try {
+        const receipt = await tokenContract.methods.allowance(accounts[0],LOTTO_GAME_ADDRESS).call({ from: accounts[0] });
+        dispatch(setupAllowance(receipt))
+        console.log("after approval", receipt);
+    } catch (error) {
+        console.log("Error in approve", error);
+    }
+}
