@@ -2,6 +2,7 @@ import { setupWeb3, setupContract,setupToken,updatePool, addEthereumAccounts, ad
 import Web3 from "web3";
 import { LOTTO_GAME__ABI, LOTTO_GAME_ADDRESS } from '../contract/Lottogame';
 import { sSIMPLE_TOKEN__ABI, SIMPLE_TOKEN_ADDRESS } from '../contract/simpleCoin';
+import { ethers } from 'ethers'
 
 
 export const loadBlockchain = async (dispatch) => {
@@ -69,11 +70,11 @@ console.log("Before Joining Pool",poolId,amount);
         console.log("after Joining Pool",receipt);
 
     }
-    export const approve = async (web3,tokenContract,amount,accounts) => {
-        console.log("Before approve",tokenContract,amount);
+    export const approve = async (tokenContract,accounts) => {
+        console.log("Before approve",tokenContract);
         try{
             
-                const receipt= await tokenContract.methods.approve(LOTTO_GAME_ADDRESS,amount).send({from:accounts[0]});
+                const receipt= await tokenContract.methods.approve(LOTTO_GAME_ADDRESS,ethers.constants.MaxUint256).send({from:accounts[0]});
                 console.log("after approval",receipt);
         }catch(error){
             console.log("Error in approve",error);

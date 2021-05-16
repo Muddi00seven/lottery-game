@@ -7,6 +7,7 @@ import { useStore } from '../../context/GlobalState'
 import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import {approve} from '../../store/asyncActions';
 
 // import {getTimeAsync} from '../../store/asyncActions'
 
@@ -90,6 +91,14 @@ function Header() {
       </div>
     </div>
   );
+  const handleApprove = async() => {
+    try{
+     let receipt = await approve(lottocontract,accounts);
+    }
+    catch(error) {
+      console.log("error",error)
+    }
+  }
 
   return (
     <div className="container">
@@ -110,7 +119,9 @@ function Header() {
             <a>Connect wallet</a>
           </li>
           : ""}
-
+        <li className="navLink connect" onClick={handleApprove}>
+            <a>Approve</a>
+          </li>
           <li className="navLink whitepaper">
             <a href="#white-paper">White Paper</a>
           </li>

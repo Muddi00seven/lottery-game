@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useStore } from '../../context/GlobalState';
 import {joinLotto} from '../../store/asyncActions';
 
+
 const CardItem = ({ data }) => {
 
     const [{ web3, accounts, claim, lottocontract }, dispatch] = useStore();
