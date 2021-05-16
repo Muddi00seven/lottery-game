@@ -3,9 +3,11 @@ import './topSection.css'
 
 const TopSection = () => {
     return (
-        <div>
-            
+        <>
+        <div className="topsection-container">
+            <h2 className="topsection-heading">Lottery Pools</h2>
         </div>
+        </>
     )
 }
 

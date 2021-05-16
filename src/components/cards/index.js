@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import CardItem from './item'
 import './card.css';
+import './card-R.css';
+import './timer.css';
+
 import {dummyData} from './data';
 import { useStore } from '../../context/GlobalState';
 
@@ -14,7 +17,7 @@ const LotteryCards = () => {
         <div className="lotter-cards-container">
             <div className="row">
             {
-                lotteryData.map((data)=> (
+                lottoPools.map((data)=> (
                     <CardItem data={data} />
                 ))
             }
