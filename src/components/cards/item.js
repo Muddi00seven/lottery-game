@@ -95,7 +95,7 @@ const CardItem = ({ data }) => {
     });
     const handleJoin = async() => {
         try{
-            // let receipt = await joinLotto(lottoContract,poolId,ether,accounts)
+            let receipt = await joinLotto(lottocontract,data._poolId,data._contributionAmount,accounts)
         }
         catch(error) {
             console.log("error",error)
