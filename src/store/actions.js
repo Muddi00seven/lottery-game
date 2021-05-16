@@ -21,7 +21,7 @@ export const setupWeb3 = (web3) => {
 }
 export const updatePool = (pools) => {
     return {
-        type: 'SETUUPDATE_POOLS',
+        type: 'UPDATE_POOLS',
         payload: pools
     };
 }
