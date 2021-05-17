@@ -81,7 +81,8 @@ const ModalBox = ({ open }) => {
     <div>
       <>
         <div style={modalStyle} className={classes.paper}>
-       
+        <TextField id="filled-search" label="participants" type="text" variant="filled" />
+        <TextField id="filled-search" label="minimumContribution" type="text" variant="filled" />
           <button className={classes.btn} 
           >
             Buy Now
