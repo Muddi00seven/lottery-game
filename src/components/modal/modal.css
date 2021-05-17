@@ -1,0 +1,41 @@
+.modal-dialog {
+    width: 20rem;
+    height: 20rem;
+    padding: 30px 10px;
+    background-color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+}
+
+.qr-container {}
+
+.back-btn {
+    margin-bottom: 10px;
+    transition: .6s;
+    display: flex !important;
+    justify-content: left !important;
+    align-items: center !important;
+    position: absolute;
+    top: 5;
+    left: 5;
+}
+
+.back-btn:hover {
+    color: rgb(14, 28, 110);
+}
+
+.qr-heading-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.qr-heading {
+    font-size: 25px;
+}
