@@ -66,10 +66,22 @@ export const getPoolById = async (lottoContract, id) => {
     pool._poolId=id;
     return pool;
 }
+//--to create a lotto pool
+export const createPool = async (lottoContract, participants, contributionAamount, accounts) => {
+    console.log("Before creating Pool", participants, contributionAamount);
+    const receipt = await lottoContract.methods.createPool(participants, contributionAamount).send({ from: accounts[0] });
+    console.log("after creating Pool", receipt);
+}
 export const joinLotto = async (lottoContract, poolId, amount, accounts) => {
     console.log("Before Joining Pool", poolId, amount);
     const receipt = await lottoContract.methods.joinPool(poolId, amount).send({ from: accounts[0] });
     console.log("after Joining Pool", receipt);
+
+}
+export const drawWinner = async (lottoContract, poolId,  accounts) => {
+    console.log("Before draw Pool", poolId );
+    const receipt = await lottoContract.methods.drawWinner(poolId).send({ from: accounts[0] });
+    console.log("after draw Winner", receipt);
 
 }
 export const approve = async (tokenContract, accounts,dispatch) => {
