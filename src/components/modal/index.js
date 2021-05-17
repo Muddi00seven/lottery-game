@@ -6,6 +6,7 @@ import { useStore } from "../../context/GlobalState";
 import TextField from "@material-ui/core/TextField";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { Link } from "react-router-dom";
+import Logo from '../../images/logo.jpg'
 // import { buyTokensAsync, rateAsync } from '../../store/asyncActions';
 // import CircleAlienImage from "../../images/area51.png";
 
@@ -23,10 +24,10 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 350,
-    height: 350,
+    width: 450,
+    height: 480,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: "2px solid #ffffeb",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     textAlign: "center",
@@ -38,9 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 
   },
-  textField: {
-    width: "100%"
-  },
+
   btn: {
     background: "#1077b3",
     borderRadius: "20px",
@@ -55,7 +54,9 @@ const useStyles = makeStyles((theme) => ({
 
 const ModalBox = ({ open }) => {
   const [{ web3, accounts, contract }, dispatch] = useStore();
-  const [etherAmount, setEtheAmount] = useState("0");
+  const [participants, setParticipants] = useState("0");
+  const [minimumContribution, setMinimumContribution] = useState("0");
+
   const [rate, setRate] = useState("");
 
   const classes = useStyles();
@@ -63,9 +64,7 @@ const ModalBox = ({ open }) => {
 
   const onSubmit = async () => {
 
-    let etherToWei = etherAmount * 10e17;
-    let stringEtherToWei = etherToWei.toString();
-    const account = accounts[0];
+
 
     try {
       // await buyTokensAsync(account, accounts, contract, stringEtherToWei, dispatch);
@@ -81,9 +80,16 @@ const ModalBox = ({ open }) => {
     <div>
       <>
         <div style={modalStyle} className={classes.paper}>
-        <TextField id="filled-search" label="participants" type="text" variant="filled" />
-        <TextField id="filled-search" label="minimumContribution" type="text" variant="filled" />
-          <button className={classes.btn} 
+        <div>
+          <img src={Logo} width={150}/>
+          </div>
+          <div className="modal-field-one-container">
+            <TextField className="modal-field-one" id="filled-search" value={participants} label="participants" onChange={(e) => setParticipants(e.target.value)} type="text" variant="filled" />
+          </div>
+          <div className="modal-field-two-container"> 
+            <TextField className="modal-field-two" id="filled-search" value={minimumContribution} label="minimumContribution" onChange={(e) => setMinimumContribution(e.target.value)} type="text" variant="filled" />
+          </div>
+          <button className={classes.btn}
           >
             Buy Now
           </button>
