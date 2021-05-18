@@ -8,6 +8,8 @@
     /* margin: 0px auto; */
     min-height: 8vh;
     background: #ffffeb;
+    margin-left: 5%;
+    margin-right: 5%
 }
 
 .header ul {
@@ -121,7 +123,8 @@
 }
 .connect{
     background-color: #fab06f;
-    transition: 0.5s
+    transition: 0.5s;
+    border-radius: 10px
 }
 .connect:hover{
     background-color: black;
@@ -174,4 +177,11 @@
     border: #EAB641 2px solid;
     background-color: transparent;
     border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+    .header{
+        margin-left: 0%;
+        margin-right: 0%
+    }
 }

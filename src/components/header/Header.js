@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import "./header.css";
 // import AOS from "aos";
 import Logo from '../../images/logo.jpg';
-// import { loadBlockchain, purchasedEtherAsync } from '../../store/asyncActions';
+import { loadBlockchain } from '../../store/asyncActions';
 import { useStore } from '../../context/GlobalState'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -27,9 +27,8 @@ function Header() {
   const [open, setOpen] = React.useState(false);
 
   const sendRequest = useCallback(async () => {
-    // loadBlockchain(dispatch);
+    loadBlockchain(dispatch);
   }, []);
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -67,15 +66,15 @@ function Header() {
               <a>Connect wallet</a>
             </li>
             : ""}
-          {
+          {/* {
             allowance <= 0 && web3 != null ?
               <li className="navLink connect" onClick={handleApprove}>
                 <a>Approve</a>
               </li> : ""
-          }
-          <li className="navLink whitepaper" onClick={handleOpen}>
+          } */}
+          {/* <li className="navLink whitepaper" onClick={handleOpen}>
             <a href="#white-paper">Craate Lottery Pool</a>
-          </li>
+          </li> */}
           <li className="navLink whitepaper">
             <a href="#white-paper">White Paper</a>
           </li>
