@@ -125,15 +125,15 @@ const CardItem = ({ data }) => {
             </span>
           </div>
         <div className="timer-flex">
-          <div className="d-two">
+          {/* <div className="d-two">
             <span className="timer-num one">
               <b>{timerDays} Days </b>
             </span>
 
-          </div>
+          </div> */}
           <div className="">
             <span className="timer-num" style={{marginLeft:"10px" }}>
-              <b> And {timerHours} :</b>
+              <b>  {timerHours} :</b>
             </span>
           </div>
           <div className="">

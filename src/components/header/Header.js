@@ -78,8 +78,8 @@ function Header() {
           <li className="navLink whitepaper">
             <a href="#white-paper">White Paper</a>
           </li>
-          <li className="navLink whitepaper">
-            <a href="#white-paper">Join Telegram</a>
+          <li className="navLink whitepaper" >
+            <a href="https://t.me/welsicorgitoken" target="_blank">Join Telegram</a>
           </li>
         </ul>
       </header>
