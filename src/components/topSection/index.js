@@ -5,6 +5,7 @@ import { useStore } from '../../context/GlobalState'
 import { loadBlockchain } from '../../store/asyncActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import Logo from '../../images/logo.jpg'
 
 
 function getModalStyle() {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         width: 500,
         textAlign: "center",
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: "#ffffeb",
         borderRadius: "30px 30px 30px 30px",
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
@@ -70,6 +71,7 @@ const TopSection = () => {
     const body = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">WELCOME </h2>
+            <img src={Logo} width={150} />
             <p id="simple-modal-description">
                 You must need an Ethereum Wallet to use the WELSI CORGI.
         </p>

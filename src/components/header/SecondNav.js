@@ -1,13 +1,13 @@
 import React, { useEffect, useCallback, useState } from "react";
 import "./secondHeader.css";
 // import AOS from "aos";
-import Logo from '../../images/logo.jpg';
 import { loadBlockchain } from '../../store/asyncActions';
 import { useStore } from '../../context/GlobalState'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { approve } from '../../store/asyncActions';
-import ModalBox from '../modal/index'
+import ModalBox from '../modal/index';
+
 // import {getTimeAsync} from '../../store/asyncActions'
 
 
