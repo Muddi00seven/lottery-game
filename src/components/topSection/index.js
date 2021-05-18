@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TopSection = () => {
-    const [{ web3, accounts }, dispatch] = useStore();
+    const [{ web3, accounts,allowance }, dispatch] = useStore();
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -62,7 +62,7 @@ const TopSection = () => {
         }
     }, [])
     useEffect(() => {
-        if (web3 != null) {
+        if ( allowance  <= 0   && web3 != null) {
             handleApproveOpen()
 
         }
@@ -72,9 +72,9 @@ const TopSection = () => {
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">WELCOME </h2>
             <img src={Logo} width={150} />
-            <p id="simple-modal-description">
+            <h3 id="simple-modal-description">
                 You must need an Ethereum Wallet to use the WELSI CORGI.
-        </p>
+        </h3>
             <p id="simple-modal-description">
 
             </p>
@@ -82,10 +82,12 @@ const TopSection = () => {
     );
     const body1 = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">WELCOME </h2>
-            <p id="simple-modal-description">
-                Approve is required Before Joining Pool
-            </p>
+            <h1 id="simple-modal-title" style={{color:"red"}}>ALERT! </h1>
+            <img src={Logo} width={150} />
+
+            <h3 id="simple-modal-description">
+              APPROVE IS REQUIRED BEFORE JOINING THE POOL.
+            </h3>
         </div>
     );
     return (
