@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useStore } from '../../context/GlobalState';
-import {joinLotto} from '../../store/asyncActions';
+import {joinLotto,drawWinner} from '../../store/asyncActions';
 
 
 const CardItem = ({ data }) => {
@@ -104,6 +104,12 @@ const CardItem = ({ data }) => {
     }
 
     const handleDraw = async() => {
+        try{
+            let receipt = await drawWinner(lottocontract,data._poolId,accounts)
+        }
+        catch(error) {
+            console.log("error",error)
+        }
         
     }
     return (
