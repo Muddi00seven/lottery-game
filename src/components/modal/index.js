@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { Link } from "react-router-dom";
 import Logo from '../../images/logo.jpg'
-// import { buyTokensAsync, rateAsync } from '../../store/asyncActions';
+import { createPool } from '../../store/asyncActions';
 // import CircleAlienImage from "../../images/area51.png";
 
 
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ModalBox = ({ open }) => {
-  const [{ web3, accounts, contract }, dispatch] = useStore();
+  const [{ web3, accounts,lottocontract, }, dispatch] = useStore();
   const [participants, setParticipants] = useState("0");
   const [minimumContribution, setMinimumContribution] = useState("0");
 
@@ -67,7 +67,7 @@ const ModalBox = ({ open }) => {
 
 
     try {
-      // await buyTokensAsync(account, accounts, contract, stringEtherToWei, dispatch);
+      await createPool(lottocontract, participants, minimumContribution, accounts);
     } catch (error) {
       console.log("error trax = ", error);
     }
@@ -89,7 +89,7 @@ const ModalBox = ({ open }) => {
           <div className="modal-field-two-container"> 
             <TextField className="modal-field-two" id="filled-search" value={minimumContribution} label="minimumContribution" onChange={(e) => setMinimumContribution(e.target.value)} type="text" variant="filled" />
           </div>
-          <button className={classes.btn}
+          <button className={classes.btn} onClick={onSubmit}
           >
             Buy Now
           </button>
