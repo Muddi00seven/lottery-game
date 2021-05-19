@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ModalBox = ({ open }) => {
-  const [{ web3, accounts,lottocontract, }, dispatch] = useStore();
+  const [{ web3, accounts,lottocontract }, dispatch] = useStore();
   const [participants, setParticipants] = useState("0");
   const [minimumContribution, setMinimumContribution] = useState("0");
 
@@ -67,7 +67,7 @@ const ModalBox = ({ open }) => {
 
 
     try {
-      await createPool(lottocontract, participants, minimumContribution, accounts);
+      await createPool(lottocontract, participants, minimumContribution, accounts,dispatch);
     } catch (error) {
       console.log("error trax = ", error);
     }

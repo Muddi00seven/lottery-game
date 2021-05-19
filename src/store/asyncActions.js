@@ -70,9 +70,10 @@ export const getPoolById = async (lottoContract, id) => {
 }
 //--to create a lotto pool
 export const createPool = async (lottoContract, participants, contributionAamount, accounts,dispatch) => {
-    console.log("Before creating Pool", participants, contributionAamount);
+    console.log("Before creating Pool", participants, contributionAamount,accounts,dispatch);
     const receipt = await lottoContract.methods.createPool(participants, contributionAamount).send({ from: accounts[0] });
     console.log("after creating Pool", receipt);
+    console.log("Updating  created Pool", receipt, dispatch);
     updatePools(lottoContract,dispatch);
 }
 export const joinLotto = async (lottoContract, poolId, amount, accounts,dispatch) => {
