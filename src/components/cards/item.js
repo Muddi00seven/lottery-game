@@ -105,7 +105,7 @@ const CardItem = ({ data }) => {
 
     const handleDraw = async() => {
         try{
-            let receipt = await drawWinner(lottocontract,data._poolId,accounts)
+            let receipt = await drawWinner(lottocontract,data._poolId,accounts,dispatch)
         }
         catch(error) {
             console.log("error",error)

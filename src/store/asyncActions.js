@@ -82,11 +82,11 @@ export const joinLotto = async (lottoContract, poolId, amount, accounts,dispatch
     updatePools(lottoContract,dispatch);
 
 }
-export const drawWinner = async (lottoContract, poolId,  accounts) => {
+export const drawWinner = async (lottoContract, poolId,  accounts,dispatch) => {
     console.log("Before draw Pool", poolId );
     const receipt = await lottoContract.methods.drawWinner(poolId).send({ from: accounts[0] });
     console.log("after draw Winner", receipt);
-
+    updatePools(lottoContract,dispatch);
 }
 export const approve = async (tokenContract, accounts,dispatch) => {
     console.log("Before approve", tokenContract, accounts);
