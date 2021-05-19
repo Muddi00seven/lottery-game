@@ -95,6 +95,7 @@ export const approve = async (tokenContract, accounts,dispatch) => {
         const receipt = await tokenContract.methods.approve(LOTTO_GAME_ADDRESS, ethers.constants.MaxUint256).send({ from: accounts[0] });
         // dispatch(setupAllowance(receipt))
         console.log("after approval", receipt);
+        allowanceAsync(tokenContract, accounts,dispatch);
     } catch (error) {
         console.log("Error in approve", error);
     }
