@@ -48,8 +48,10 @@ export const updatePools = async (lottoContract, dispatch) => {
 
             console.log("List of Pools", poolList);
             for (var i = 0; i < poolList.length; i++) {
+                if(parseInt(poolList[i])!=0){
                 const pool = await getPoolById(lottoContract, poolList[i]);
                 lottopools.push(pool);
+                }
             }
             console.log("Pools List", lottopools);
             dispatch(updatePool(lottopools));
