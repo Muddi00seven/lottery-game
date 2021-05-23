@@ -159,7 +159,7 @@ const CardItem = ({ data }) => {
                         <h3 className="lottercard-max-part">Max participants: {data._maxParticipants}</h3>
                     </div>
 
-                    <h2 className="lottercard-contribution-heading">Contribution amount: {data._contributionAmount}</h2>
+                    <h2 className="lottercard-contribution-heading">Contribution amount: {data._contributionAmount /10e17}</h2>
                     <div className="lottercard-btn-container">
                         <button className="lottercard-draw-btn" onClick={handleDraw}>
                             Draw Winner

@@ -67,7 +67,7 @@ const ModalBox = ({ open }) => {
 
 
     try {
-      await createPool(lottocontract, participants, minimumContribution, accounts,dispatch);
+      await createPool(lottocontract, participants, (minimumContribution*10e17).toString(), accounts,dispatch);
     } catch (error) {
       console.log("error trax = ", error);
     }
