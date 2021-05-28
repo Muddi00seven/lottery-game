@@ -84,7 +84,7 @@ contract Ownable is Context {
     /**
      * @dev Throws if called by any account other than the owner.
      */
-    modifier onlyOwner() {
+    modifier onlyOwner()  {
         require(_owner == _msgSender(), "Ownable: caller is not the owner");
         _;
     }
@@ -281,7 +281,7 @@ library SafeMath {
 //     _owner = newOwner;
 //   }
 // }
-contract lottoGame  {
+contract lottoGame is Ownable  {
     using SafeMath for uint;
     struct LottoPool{
         uint _poolId;
@@ -397,7 +397,7 @@ return poolById[poolId]._participants[participantId];
      retValue=(retValue>0)?retValue:1;
        return retValue;
   }
-  function updatedDuration(uint time)public{
+  function updatedDuration(uint time)public  onlyOwner{
     duration= time;
   }
   function _timecheck(uint poolId,uint currenttime)public{
