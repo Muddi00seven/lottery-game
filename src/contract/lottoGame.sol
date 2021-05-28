@@ -400,6 +400,10 @@ return poolById[poolId]._participants[participantId];
   function updatedDuration(uint time)public  onlyOwner{
     duration= time;
   }
+   function updateToken(address tokenAddress)public  onlyOwner{
+    _Token= IERC20(tokenAddress);
+  }
+  
   function _timecheck(uint poolId,uint currenttime)public{
     uint timelimit= poolById[poolId]._timestamp.add(duration);
     require(currenttime<=timelimit,"time is up");
