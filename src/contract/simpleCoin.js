@@ -1,4 +1,4 @@
-export const SIMPLE_TOKEN_ADDRESS = "0xCf67597F09a3698162f0A54264070D94b62b36CB";
+export const SIMPLE_TOKEN_ADDRESS = "0x1c0ecac20edfbcdd5ade8e080cb56b9bf4208e03";
 
 
 export const sSIMPLE_TOKEN__ABI = [
