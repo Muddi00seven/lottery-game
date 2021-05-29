@@ -24,7 +24,9 @@ export const loadBlockchain = async (dispatch) => {
             console.log("contract.methods = ", lottcontract.methods);
 
             await updatePools(lottcontract, dispatch);
-            await allowanceAsync(tokenContract,accounts,dispatch)
+            await allowanceAsync(tokenContract,accounts,dispatch) 
+            let check = await tokenAddress(lottcontract,accounts);
+            console.log("token address",check)
 
 
         }
@@ -111,5 +113,16 @@ export const allowanceAsync = async (tokenContract, accounts,dispatch) => {
         console.log("after approval", receipt);
     } catch (error) {
         console.log("Error in approve", error);
+    }
+}
+
+export const tokenAddress = async(contract,accounts) => {
+    try{
+        let receipt = await contract.methods._Token().call({from: accounts[0]})
+        console.log("receipt",receipt)
+        return receipt
+    }
+    catch(error) {
+        console.log(error)
     }
 }
