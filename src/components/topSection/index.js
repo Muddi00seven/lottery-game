@@ -6,7 +6,7 @@ import { loadBlockchain } from '../../store/asyncActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Logo from '../../images/logo.jpg'
-
+import CancelIcon from '@material-ui/icons/Cancel';
 
 function getModalStyle() {
     const top = 40;
@@ -70,7 +70,8 @@ const TopSection = () => {
 
     const body = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">WELCOME </h2>
+        <div style={{marginLeft: "420px"}}><CancelIcon style={{cursor:"pointer"}} onClick={handleClose}/></div>
+            <h2 id="simple-modal-title" style={{marginTop: "-10px"}}>WELCOME </h2>
             <img src={Logo} width={150} />
             <h3 id="simple-modal-description">
                 You must need an Ethereum Wallet to use the WELSI CORGI.
@@ -82,7 +83,8 @@ const TopSection = () => {
     );
     const body1 = (
         <div style={modalStyle} className={classes.paper}>
-            <h1 id="simple-modal-title" style={{color:"red"}}>ALERT! </h1>
+                <div style={{marginLeft: "420px"}}><CancelIcon style={{cursor:"pointer"}} onClick={handleApproveClose}/></div>
+            <h1 id="simple-modal-title" style={{color:"red", marginTop: "-10px"}} >ALERT! </h1>
             <img src={Logo} width={150} />
 
             <h3 id="simple-modal-description">

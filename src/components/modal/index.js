@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Logo from '../../images/logo.jpg'
 import { createPool } from '../../store/asyncActions';
 // import CircleAlienImage from "../../images/area51.png";
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
 function getModalStyle() {
@@ -80,7 +81,8 @@ const ModalBox = ({ open }) => {
     <div>
       <>
         <div style={modalStyle} className={classes.paper}>
-        <div>
+        {/* <div style={{marginLeft: "420px"}}><CancelIcon style={{cursor:"pointer"}} onClick={handleApproveClose}/></div> */}
+        <div style={{marginTop: "-10px"}}> 
           <img src={Logo} width={150}/>
           </div>
           <div className="modal-field-one-container">
